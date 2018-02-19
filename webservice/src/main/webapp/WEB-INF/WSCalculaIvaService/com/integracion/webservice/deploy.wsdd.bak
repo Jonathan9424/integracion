@@ -1,0 +1,30 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from WSCalculaIvaService WSDL service -->
+
+  <service name="WSCalculaIva" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservice.integracion.com"/>
+      <parameter name="wsdlServiceElement" value="WSCalculaIvaService"/>
+      <parameter name="schemaQualified" value="http://webservice.integracion.com"/>
+      <parameter name="wsdlServicePort" value="WSCalculaIva"/>
+      <parameter name="className" value="com.integracion.webservice.WSCalculaIvaSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="WSCalculaIva"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="operacion" qname="operNS:operacion" xmlns:operNS="http://webservice.integracion.com" returnQName="retNS:operacionReturn" xmlns:retNS="http://webservice.integracion.com" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:valor" xmlns:pns="http://webservice.integracion.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:porcentaje" xmlns:pns="http://webservice.integracion.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="operacion"/>
+
+  </service>
+</deployment>
