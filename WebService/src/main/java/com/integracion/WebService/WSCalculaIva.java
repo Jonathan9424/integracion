@@ -6,7 +6,6 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import com.integracion.interfaces.ICalculaIva;
-import com.integracion.model.CalcularIvaBean;
 
 @WebService(serviceName = "calcula")
 public class WSCalculaIva {
@@ -16,8 +15,8 @@ public class WSCalculaIva {
 
 	@WebMethod(operationName = "iva")
 	public int operacion(@WebParam int valor, @WebParam int porcentaje) {
-		CalcularIvaBean cib = new CalcularIvaBean();
-		int respuesta = cib.iva(valor, porcentaje);
+		// CalcularIvaBean cb = new CalcularIvaBean();
+		int respuesta = ic.iva(valor, porcentaje);
 		return respuesta;
 	}
 
