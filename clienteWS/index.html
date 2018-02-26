@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="import" href="wsdl-js-master/socket-fetch/socket-fetch.html">
+
     <title>Cliente</title>
 </head>
 
@@ -40,6 +42,31 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js "></script>
     <script type="text/javascript" src="js/CustomBack.js"></script>
+    <script src="wsdl-js-master/abdmob/x2js/xml2json.min.js"></script>
+    <script src="wsdl-js-master/wsdl.js"></script>
+    <script type="text/javascript">
+        var apiService = 'http://localhost:8080/WebService-0.0.1-SNAPSHOT/calcula HTTP/1.1';
+        var w = new wsdl(apiService);
+        w.load().then(function () {
+            var xmlUno =
+                '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://WebService.integracion.com/">' +
+                '<soapenv:Header/>' +
+                '<soapenv:Body>' +
+                '<web:iva>' +
+                '<arg0>30000</arg0>' +
+                '<arg1>19</arg1>' +
+                '</web:iva>' +
+                '</soapenv:Body>' +
+                '</soapenv:Envelope>';
+            //Once loaded call createRequests, to parse each operation and associated types.
+            w.createRequests();
+            //to get operations
+            var operations = w.operations;
+
+        });
+
+        function nuevoService() {}
+    </script>
 </body>
 
 </html>

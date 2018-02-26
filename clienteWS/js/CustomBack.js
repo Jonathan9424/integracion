@@ -6,7 +6,7 @@ document.getElementById("boton").onclick = function () {
   valorDos = parseInt(valorDos);
   var res = suma(valorUno, valorDos);
   document.getElementById("resultado").innerHTML = res;
-  ajac();
+  nuevoService();
 };
 
 function suma(valorUno, valorDos) {
